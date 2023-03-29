@@ -1,0 +1,62 @@
+﻿@model ProyectoTest.Consulta
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout_Tienda.cshtml";
+}
+
+<style>
+    body {
+        background-image: url('https://static.vecteezy.com/system/resources/previews/007/355/451/non_2x/abstract-elegant-green-waves-lines-on-black-background-free-vector.jpg');
+    }
+
+    a {
+        Color: white;
+    }
+</style>
+
+<h2>Delete</h2>
+<br />
+<h3 class="text-white">¿Desea eliminar la consulta?</h3>
+<div>
+    <br />
+    <h4 class="text-white">Consulta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="text-white">
+            NOMBRE:
+        </dt>
+
+        <dd class="text-white">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <br />
+        <dt class="text-white">
+            COMPONENTE:
+        </dt>
+
+        <dd class="text-white">
+            @Html.DisplayFor(model => model.mascota)
+        </dd>
+        <br />
+        <dt class="text-white">
+            FECHA DE CONSULTA:
+        </dt>
+
+        <dd class="text-white">
+            @Html.DisplayFor(model => model.fecha_consulta)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="d-flex justify-content-between">
+            <p>
+                <input type="submit" value="Eliminar" class="btn btn-success" />
+                <a class="btn btn-danger" href="@Url.Action("Index","Consultas")">Listado</a>
+            </p>
+        </div>
+    }
+</div>

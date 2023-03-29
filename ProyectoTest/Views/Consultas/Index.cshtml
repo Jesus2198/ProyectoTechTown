@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProyectoTest.Consulta>
+
+@{
+    ViewBag.Title = "Citas Medicas Pendientes";
+    Layout = "~/Views/Shared/_Layout_Tienda.cshtml";
+}
+
+<h2>Index</h2>
+<style>
+    body {
+        background-image: url('https://static.vecteezy.com/system/resources/previews/007/355/451/non_2x/abstract-elegant-green-waves-lines-on-black-background-free-vector.jpg');
+    }
+    button {
+        color:white;
+    }
+    a {
+        
+        Color:white;
+    }
+</style>
+
+<br />
+
+
+<div class="d-flex justify-content-between">
+    <a class="btn btn-danger" href="@Url.Action("Index","Tienda")">Volver</a>
+
+    <a class="btn btn-success" href="@Url.Action("Create","Consultas")">Crear nueva consulta</a>
+</div>
+<br />
+
+
+<table class="table">
+    <tr>
+        <th class="text-white text-center">
+            NOMBRE
+        </th>
+        <th class="text-white text-center">
+            COMPONENTE-CASO
+        </th>
+        <th class="text-white text-center">
+            HORARIO CONSULTA
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-white text-center">
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td >
+            <td class="text-white text-center">
+                @Html.DisplayFor(modelItem => item.mascota)
+            </td>
+            <td class="text-white text-center">
+                @Html.DisplayFor(modelItem => item.fecha_consulta)
+            </td>
+            <td class="d-flex justify-content-between">
+                <div class="btn btn-info">@Html.ActionLink("Editar", "Edit", new { id = item.id })</div>
+                <div class="btn btn-info">@Html.ActionLink("Detalles", "Details", new { id = item.id })</div>
+                <div class="btn btn-info">@Html.ActionLink("Eliminar", "Delete", new { id = item.id })</div>
+            </td>
+        </tr>
+    }
+
+</table>

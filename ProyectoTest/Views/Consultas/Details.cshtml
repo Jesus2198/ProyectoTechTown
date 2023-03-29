@@ -1,0 +1,59 @@
+﻿@model ProyectoTest.Consulta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Tienda.cshtml";
+}
+
+<style>
+    body {
+        background-image: url('https://static.vecteezy.com/system/resources/previews/007/355/451/non_2x/abstract-elegant-green-waves-lines-on-black-background-free-vector.jpg');
+    }
+
+    a {
+        Color: white;
+    }
+</style>
+
+<h2 class="text-white">Detalles</h2>
+
+<div>
+    <br />
+    <h4 class="text-white"> Detalles de la Consulta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="text-white">
+            Nombre:
+        </dt>
+
+        <dd class="text-white">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt class="text-white">
+            Componente:
+        </dt>
+
+        <dd class="text-white">
+            @Html.DisplayFor(model => model.mascota)
+        </dd>
+
+        <dt class="text-white">
+            Fecha de Consulta:
+        </dt>
+
+        <dd class="text-white">
+            @Html.DisplayFor(model => model.fecha_consulta)
+        </dd>
+
+    </dl>
+    <div>
+        <div class="d-flex justify-content-between">
+            <p>
+                <a class="btn btn-danger" href="@Url.Action("Index","Consultas")">Listado</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+

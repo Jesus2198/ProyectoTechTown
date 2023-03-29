@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ProyectoTest.Consulta>
+
+@{
+    ViewBag.Title = "Citas Medicas Pendientes";
+    Layout = "~/Views/Shared/_Layout_Tienda.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<a class="dropdown-item" href="@Url.Action("Index","Tienda")">Volver a la Tienda</a>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_consulta)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mascota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_consulta)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                @Html.ActionLink("Atendido", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

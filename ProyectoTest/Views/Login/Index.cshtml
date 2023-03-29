@@ -1,0 +1,204 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<style>
+
+</style>
+<html>
+<head>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif ;
+}
+        body {
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('https://img.freepik.com/vector-premium/fondo-negro-vintage-damasco-elementos-florales-estilo-barroco-gotico-vector-textura-real_619989-958.jpg');
+            margin-top: 100px;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+.box{
+    position: relative;
+    width: 380px;
+    height: 420px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+    transform-origin:bottom right;
+    animation: animate 6s linear infinite;
+}
+.box::after{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    height: 420px;
+    background: linear-gradient(0deg,transparent,#45f3ff,#45f3ff);
+    transform-origin:bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3 ;
+}
+
+.form{
+    position:absolute;
+    inset: 2px;
+    border-radius: 8px;
+    background-color: #28292d;
+    z-index: 10;
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+}
+.form h2{
+    color: #45f3ff;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+.inputBox{
+    position: relative;
+    width: 300px;
+    margin-top: 25px;
+}
+.inputBox input{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #23242a;
+    font-size: 1.5em;
+    letter-spacing: 0.05em;
+    z-index: 10;
+
+}
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 30px 0px 10px;
+    font-size: 1em;
+    color: #8f8f8f;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span
+{
+    color: #45f3ff;
+    transform: translateX(0px) translateY(-50px);
+    font-size: 0.9em;
+}
+.inputBox i{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #45f3ff;
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
+    z-index: 9;
+}
+.inputBox input:valid ~ i,
+.inputBox input:focus ~ i
+{
+    height: 44px;
+}
+.links{
+    display: flex;
+    justify-content: space-between;
+}
+.links a{
+   position: relative;
+   left: -55px;
+   top: 25px;
+    font-size: 1em;
+    color: #8f8f8f;
+    text-decoration: none;
+}
+.links a:hover,
+.links a:nth-child(2)
+{
+    color: #45f3ff;
+}
+input[type="submit"]{
+    border: none;
+    outline: none;
+    background: #45f3ff;
+    padding: 11px 25px;
+    width: 100px;
+    margin-top: px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    @Styles.Render("~/estilos.css")
+</head>
+<body>
+    <div class="box">
+        <div id="layoutAuthentication">
+            <div class="form" id="layoutAuthentication_content">
+                <h2>
+                    Iniciar Sesion
+                </h2>
+                <form action="@Url.Content("~/Login/Index")" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="inputBox">
+                        <input id="inputEmail" name="NCorreo" type="email" placeholder="name@example.com" @*value="pruebas@gmail.com"*@ value="admin@example.com" />
+                        <span>Correo</span><i></i>
+                    </div>
+                    <div class="inputBox">
+                        <input id="inputPassword" name="NContrasena" type="password" placeholder="Contraseña" @*value="12345"*@ autocomplete="off" value="admin123" />
+                        <span>Contraseña</span><i></i>
+                    </div>
+                    <div class="form-floating mb-3">
+                        @{if (ViewBag.Error != null)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @ViewBag.Error
+                                </div>
+                            }
+                        }
+                    </div>
+                    <br />
+                    <div>
+                        <input type="submit" value="Login" class="c">
+                    </div>
+                    <div class="links">
+                        <br><br><br><br> <a id="publicidad_cuenta" href="@Url.Action("Registrarse","Login")">Aun no tienes cuenta? Registrate aqui</a>
+                    </div>
+            </div>
+
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
